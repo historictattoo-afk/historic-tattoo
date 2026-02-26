@@ -65,7 +65,7 @@ export default function ContactPage() {
           {/* Google Maps */}
           <div className="mb-16 rounded-md overflow-hidden border-2 border-ht-red/20">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.5!2d-122.61!3d45.505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5495a0b3e3c5d7a7%3A0x7f8e2c3d4b5a6978!2sHistoric%20Tattoo!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Historic+Tattoo,2001+SE+50th+Ave,Portland,OR+97215&zoom=15"
               width="100%"
               height="400"
               style={{ border: 0 }}
