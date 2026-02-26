@@ -156,8 +156,8 @@ export default function Home() {
           </div>
 
           <h1 className="font-display font-bold uppercase leading-none mb-4">
-            <span className="block text-5xl sm:text-7xl md:text-8xl text-ht-cream tracking-tight">Historic</span>
-            <span className="block text-5xl sm:text-7xl md:text-8xl text-ht-red tracking-tight">Tattoo</span>
+            <span className="block text-5xl sm:text-7xl md:text-8xl text-ht-cream tracking-wide">Historic</span>
+            <span className="block text-5xl sm:text-7xl md:text-8xl text-ht-red tracking-wide">Tattoo</span>
           </h1>
 
           <p className="font-body text-ht-cream/70 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed mb-3">
