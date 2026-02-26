@@ -15,11 +15,9 @@ html {
 body {
   background-color: #0a0a08;
   color: #f5edd6;
-  /* Subtle parchment/aged paper noise texture via CSS gradient */
   background-image:
     radial-gradient(ellipse at 20% 50%, rgba(212, 160, 23, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(196, 30, 30, 0.02) 0%, transparent 50%),
-    repeating-conic-gradient(rgba(245, 237, 214, 0.015) 0% 25%, transparent 0% 50%) 0 0 / 4px 4px;
+    radial-gradient(ellipse at 80% 20%, rgba(196, 30, 30, 0.02) 0%, transparent 50%);
 }
 
 /* ── Ornament Divider (gold gradient) ─────────────── */
@@ -162,14 +160,6 @@ body {
   position: relative;
 }
 
-.parchment-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-conic-gradient(rgba(245, 237, 214, 0.02) 0% 25%, transparent 0% 50%) 0 0 / 3px 3px;
-  pointer-events: none;
-}
 
 /* ── Scroll Reveal Animation ──────────────────────── */
 @keyframes fadeUp {
