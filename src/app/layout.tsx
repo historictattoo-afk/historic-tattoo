@@ -119,8 +119,8 @@ const localBusinessSchema = {
   hasMap: "https://maps.google.com/?q=2001+SE+50th+Ave,+Portland,+OR+97215",
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.5",
-    reviewCount: "86",
+    ratingValue: "4.8",
+    reviewCount: "309",
     bestRating: "5",
     worstRating: "1",
   },

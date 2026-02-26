@@ -14,6 +14,8 @@ import {
   CornerFrameSVG,
   PinAccent,
 } from "@/components/Decorations";
+import { artists as allArtists } from "@/data/artists";
+import { business } from "@/data/business";
 
 const trustStats = [
   { num: "17+", label: "Years in Business", icon: "anchor" },
@@ -52,44 +54,7 @@ const services = [
   },
 ];
 
-const artists = [
-  {
-    name: "Craig Brown",
-    days: "Wed – Sat",
-    ig: "https://www.instagram.com/historictattoo/",
-    photo: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260914078-GP6VEZ0QUIHLSBNVQ9VD/image0+%283%29.jpeg",
-  },
-  {
-    name: "Jonathan Vallee",
-    days: "Wed – Sat",
-    ig: "https://www.instagram.com/historictattoo/",
-    photo: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1533674774480-KW5OU5BVXB2DQ0ON3951/Screen+Shot+2018-08-07+at+1.21.22+PM.png",
-  },
-  {
-    name: "Krystian Schneider",
-    days: "Tue, Wed, Fri, Sat",
-    ig: "https://www.instagram.com/historictattoo/",
-    photo: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752153066661-XCKV7C47MASE3QH8V23O/Screenshot%2B2025-07-10%2Bat%2B6.10.25%25E2%2580%25AFAM.jpg",
-  },
-  {
-    name: "Adam DeFiglio",
-    days: "Fri – Mon",
-    ig: "https://www.instagram.com/historictattoo/",
-    photo: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752154031208-0211B5W3OOSB6L1EDEFZ/IMG_1250.jpeg",
-  },
-  {
-    name: "Tony J. Vyeda",
-    days: "Wed – Sat",
-    ig: "https://www.instagram.com/historictattoo/",
-    photo: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260696730-T41YHUXASE5MA2MH3ZMQ/image0.jpeg",
-  },
-  {
-    name: "Abbie Fitzpatrick",
-    days: "Sun – Tue",
-    ig: "https://www.instagram.com/historictattoo/",
-    photo: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752153767790-VGSGPM17EFWTG09CORM9/unnamed.jpg",
-  },
-];
+const homeArtists = allArtists.filter((a) => a.photo !== null);
 
 const portfolioGrid = [
   { src: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260914078-GP6VEZ0QUIHLSBNVQ9VD/image0+%283%29.jpeg", alt: "Traditional American tattoo by Craig Brown at Historic Tattoo Portland" },
@@ -172,35 +137,32 @@ export default function Home() {
             <TradStar className="w-3 h-3 inline text-ht-gold mr-1" />
             <TradStar className="w-3 h-3 inline text-ht-gold mr-1" />
             <TradStar className="w-3 h-3 inline text-ht-gold mr-2" />
-            Rated on Google & Yelp
+            {business.reviews.google.rating} Stars · {business.reviews.google.count}+ Reviews on Google
           </p>
 
-          {/* Stamp-style CTAs */}
+          {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
-            <a
-              href="tel:5032363440"
-              className="stamp-btn w-full sm:w-auto px-8 py-4 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
-            >
-              Call (503) 236-3440
+            <a href={business.phoneHref} className="btn-primary">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              Call {business.phone}
             </a>
-            <Link
-              href="/get-what-you-get"
-              className="stamp-btn w-full sm:w-auto px-8 py-4 border-2 border-ht-cream/30 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors"
-            >
+            <Link href="/get-what-you-get" className="btn-secondary">
               Get What You Get
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </Link>
             <a
-              href="https://maps.google.com/?q=2001+SE+50th+Ave,+Portland,+OR+97215"
+              href={business.maps.directions}
               target="_blank"
               rel="noopener noreferrer"
-              className="stamp-btn w-full sm:w-auto px-8 py-4 border-2 border-ht-cream/30 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors"
+              className="btn-secondary"
             >
               Get Directions
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
             </a>
           </div>
 
           <p className="font-body text-xs text-ht-cream/40 tracking-widest uppercase">
-            2001 SE 50th Ave · Open Daily 11am–7pm · Walk-ins Always Welcome
+            {business.address.street} · Open Daily {business.hours.short} · Walk-ins Always Welcome
           </p>
         </div>
 
@@ -256,16 +218,17 @@ export default function Home() {
                 <p className="font-body text-sm text-ht-black/60 leading-relaxed mb-6 flex-1">{s.description}</p>
                 <Link
                   href="/get-what-you-get"
-                  className="block px-4 py-2 bg-ht-red text-white font-display text-xs tracking-widest uppercase hover:bg-ht-red-light transition-colors border-2 border-ht-black"
+                  className="btn-primary !bg-ht-red !text-white !shadow-none !rounded-none border-2 border-ht-black text-xs"
                 >
                   {s.cta}
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
                 </Link>
               </div>
             ))}
           </div>
 
           <p className="text-center font-body text-ht-cream/40 text-sm">
-            Just show up — no appointment needed. Open daily 11am–7pm.
+            Just show up — no appointment needed. Open daily {business.hours.short}.
           </p>
         </div>
       </section>
@@ -299,12 +262,16 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="text-center flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/gallery" className="btn-primary">
+              View Full Gallery
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </Link>
             <a
-              href="https://www.instagram.com/historictattoo/"
+              href={business.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="stamp-btn inline-block px-8 py-4 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
+              className="btn-secondary"
             >
               See More on Instagram
             </a>
@@ -332,16 +299,11 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/about"
-                className="stamp-btn px-6 py-3 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors text-center"
-              >
+              <Link href="/about" className="btn-primary">
                 Our Story
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
               </Link>
-              <Link
-                href="/artists"
-                className="stamp-btn px-6 py-3 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors text-center"
-              >
+              <Link href="/artists" className="btn-secondary">
                 Meet the Artists
               </Link>
             </div>
@@ -374,12 +336,10 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
-            {artists.map((artist) => (
-              <a
+            {homeArtists.map((artist) => (
+              <Link
                 key={artist.name}
-                href={artist.ig}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/artists/${artist.slug}`}
                 className="flash-card parchment-card p-4 text-center group"
               >
                 {/* Ornate circular frame */}
@@ -397,16 +357,14 @@ export default function Home() {
                   {artist.name}
                 </h3>
                 <p className="font-body text-xs text-ht-cream/40">{artist.days}</p>
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="text-center">
-            <Link
-              href="/artists"
-              className="inline-block font-display text-sm tracking-widest uppercase text-ht-gold hover:text-ht-red transition-colors border-b border-ht-gold/40 hover:border-ht-red pb-1"
-            >
+            <Link href="/artists" className="btn-tertiary">
               View Full Artist Portfolios
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </Link>
           </div>
         </div>
@@ -415,19 +373,42 @@ export default function Home() {
       {/* ── Reviews / Social Proof ───────────────────────── */}
       <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-4">What People Are Saying</p>
             <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase text-ht-cream mb-4">
-              <TradStar className="w-5 h-5 inline text-ht-gold" />
-              <TradStar className="w-5 h-5 inline text-ht-gold" />
-              <TradStar className="w-5 h-5 inline text-ht-gold" />
-              <TradStar className="w-5 h-5 inline text-ht-gold" />
-              <TradStar className="w-5 h-5 inline text-ht-gold" />
-              <span className="ml-3">Rated</span>
+              {business.reviews.total}+ Reviews
             </h2>
             <p className="font-body text-ht-cream/60">
-              86+ reviews on Yelp and Google. Portland&apos;s most-loved traditional tattoo shop.
+              Portland&apos;s most-loved traditional tattoo shop.
             </p>
+          </div>
+
+          {/* Stats bar */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-12">
+            <a href={business.reviews.google.url} target="_blank" rel="noopener noreferrer" className="parchment-card px-6 py-3 flex items-center gap-3 hover:border-ht-gold/40 transition-colors">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <TradStar key={i} className="w-4 h-4 text-ht-gold" />
+                ))}
+              </div>
+              <div className="text-left">
+                <p className="font-display text-sm text-ht-cream">{business.reviews.google.rating} on Google</p>
+                <p className="font-body text-xs text-ht-cream/40">{business.reviews.google.count} reviews</p>
+              </div>
+              <span className="font-display text-[10px] tracking-widest uppercase text-ht-green border border-ht-green/30 px-2 py-0.5 rounded-sm ml-2">Verified</span>
+            </a>
+            <a href={business.reviews.yelp.url} target="_blank" rel="noopener noreferrer" className="parchment-card px-6 py-3 flex items-center gap-3 hover:border-ht-gold/40 transition-colors">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <TradStar key={i} className={`w-4 h-4 ${i < 4 ? "text-ht-gold" : "text-ht-gold/30"}`} />
+                ))}
+              </div>
+              <div className="text-left">
+                <p className="font-display text-sm text-ht-cream">{business.reviews.yelp.rating} on Yelp</p>
+                <p className="font-body text-xs text-ht-cream/40">{business.reviews.yelp.count} reviews</p>
+              </div>
+              <span className="font-display text-[10px] tracking-widest uppercase text-ht-green border border-ht-green/30 px-2 py-0.5 rounded-sm ml-2">Verified</span>
+            </a>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -455,18 +436,18 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://www.yelp.com/biz/historic-tattoo-portland"
+              href={business.reviews.yelp.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="stamp-btn px-6 py-3 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors text-center"
+              className="btn-secondary"
             >
               Read Reviews on Yelp
             </a>
             <a
-              href="https://maps.google.com/?q=Historic+Tattoo+Portland"
+              href={business.reviews.google.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="stamp-btn px-6 py-3 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors text-center"
+              className="btn-secondary"
             >
               Read Reviews on Google
             </a>
@@ -480,14 +461,14 @@ export default function Home() {
           <div className="text-center mb-12">
             <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-4">Follow Along</p>
             <BannerRibbon className="w-64 sm:w-80 h-14 mx-auto mb-4">
-              @historictattoo
+              {business.social.instagramHandle}
             </BannerRibbon>
             <p className="font-body text-ht-cream/50 mb-2 mt-4">38,000+ followers · Portland, OR</p>
             <a
-              href="https://www.instagram.com/historictattoo/"
+              href={business.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="stamp-btn inline-block mt-2 px-6 py-2 bg-ht-red text-white font-display text-xs tracking-widest uppercase hover:bg-ht-red-light transition-colors"
+              className="btn-primary !w-auto inline-flex mt-2"
             >
               Follow on Instagram
             </a>
@@ -498,7 +479,7 @@ export default function Home() {
             {portfolioGrid.slice(0, 9).map((img, i) => (
               <a
                 key={i}
-                href="https://www.instagram.com/historictattoo/"
+                href={business.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative aspect-square overflow-hidden bg-ht-black group block warm-glow"
@@ -519,12 +500,13 @@ export default function Home() {
 
           <div className="text-center">
             <a
-              href="https://www.instagram.com/historictattoo/"
+              href={business.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-display text-sm tracking-widest uppercase text-ht-gold hover:text-ht-red transition-colors border-b border-ht-gold/40 hover:border-ht-red pb-1"
+              className="btn-tertiary"
             >
               View All Posts on Instagram
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </a>
           </div>
         </div>
@@ -551,8 +533,8 @@ export default function Home() {
               <AnchorIcon className="w-6 h-6 text-ht-gold mx-auto mb-3" />
               <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-3">Address</p>
               <p className="font-body text-ht-cream/80 text-sm leading-relaxed">
-                2001 SE 50th Ave<br />Portland, OR 97215<br />
-                <span className="text-ht-cream/40 text-xs">SE Portland · Near SE Division</span>
+                {business.address.street}<br />{business.address.city}, {business.address.state} {business.address.zip}<br />
+                <span className="text-ht-cream/40 text-xs">{business.address.neighborhood}</span>
               </p>
             </div>
             <div className="parchment-card p-6">
@@ -560,36 +542,35 @@ export default function Home() {
               <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-3">Hours</p>
               <p className="font-body text-ht-cream/80 text-sm">
                 Open Every Day<br />
-                <span className="text-ht-cream font-medium">11am – 7pm</span><br />
+                <span className="text-ht-cream font-medium">{business.hours.short}</span><br />
                 <span className="text-ht-cream/40 text-xs">Walk-ins always welcome</span>
               </p>
             </div>
             <div className="parchment-card p-6">
               <HeartIcon className="w-6 h-6 text-ht-gold mx-auto mb-3" />
               <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-3">Contact</p>
-              <a href="tel:5032363440" className="font-body text-ht-cream/80 text-sm hover:text-ht-red transition-colors block">
-                (503) 236-3440
+              <a href={business.phoneHref} className="font-body text-ht-cream/80 text-sm hover:text-ht-red transition-colors block">
+                {business.phone}
               </a>
-              <a href="mailto:historictattoo@gmail.com" className="font-body text-ht-cream/40 text-xs hover:text-ht-red transition-colors break-all block mt-1">
-                historictattoo@gmail.com
+              <a href={`mailto:${business.email}`} className="font-body text-ht-cream/40 text-xs hover:text-ht-red transition-colors break-all block mt-1">
+                {business.email}
               </a>
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:5032363440"
-              className="stamp-btn px-8 py-4 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
-            >
-              Call (503) 236-3440
+            <a href={business.phoneHref} className="btn-primary">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              Call {business.phone}
             </a>
             <a
-              href="https://maps.google.com/?q=2001+SE+50th+Ave,+Portland,+OR+97215"
+              href={business.maps.directions}
               target="_blank"
               rel="noopener noreferrer"
-              className="stamp-btn px-8 py-4 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors"
+              className="btn-secondary"
             >
               Get Directions
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
             </a>
           </div>
         </div>
