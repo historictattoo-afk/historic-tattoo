@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  BannerRibbon,
+  OrnamentalDivider,
+  StampBadge,
+  AnchorIcon,
+  RoseIcon,
+  HeartIcon,
+} from "@/components/Decorations";
 
 export const metadata: Metadata = {
   title: "About | Historic Tattoo — Portland, OR",
@@ -11,22 +19,23 @@ export default function AboutPage() {
   return (
     <>
       {/* Page header */}
-      <section className="pt-32 pb-16 px-4 text-center border-b border-ht-red/10">
-        <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-3">
-          Est. 2007
-        </p>
-        <h1 className="font-display text-5xl sm:text-7xl font-bold uppercase text-ht-cream">
-          About
-        </h1>
+      <section className="pt-32 pb-16 px-4 text-center border-b-2 border-ht-red/20 diagonal-stripes relative">
+        <div className="relative z-10">
+          <StampBadge className="mb-4">Est. 2007</StampBadge>
+          <h1 className="font-display text-5xl sm:text-7xl font-bold uppercase text-ht-cream mt-4">
+            About
+          </h1>
+          <OrnamentalDivider className="mt-4" />
+        </div>
       </section>
 
       {/* Story */}
       <section className="py-24 px-4">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-3xl font-bold uppercase text-ht-cream mb-8">
+          <BannerRibbon className="w-56 sm:w-72 h-12 mb-8">
             Our Story
-          </h2>
-          <div className="space-y-6 font-body text-ht-cream/80 leading-relaxed text-lg">
+          </BannerRibbon>
+          <div className="space-y-6 font-body text-ht-cream/80 leading-relaxed text-lg mt-8">
             <p>
               Historic Tattoo opened its doors in Portland, Oregon in 2007 with one mission: keep
               traditional American tattooing alive and thriving. We&apos;re a shop built on a deep
@@ -49,30 +58,35 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-24 px-4 bg-ht-gray border-y border-ht-red/10">
+      <section className="py-24 px-4 bg-ht-gray border-y-2 border-ht-red/20">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl sm:text-4xl font-bold uppercase text-ht-cream">
               What We Stand For
             </h2>
+            <OrnamentalDivider className="mt-4" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
               {
+                Icon: AnchorIcon,
                 title: "The Tradition",
                 body: "We honor the lineage of traditional American tattooing — the sailors, the carnies, the old-school artists who built this art form.",
               },
               {
+                Icon: RoseIcon,
                 title: "The Craft",
                 body: "Bold lines that hold, colors that last, and designs that look as good in 20 years as they do on day one. No shortcuts.",
               },
               {
+                Icon: HeartIcon,
                 title: "The Community",
-                body: "Historic Tattoo is a Portland institution. We&apos;re proud to be part of this city&apos;s culture and to welcome artists and collectors from everywhere.",
+                body: "Historic Tattoo is a Portland institution. We're proud to be part of this city's culture and to welcome artists and collectors from everywhere.",
               },
             ].map((v) => (
-              <div key={v.title} className="border-t-2 border-ht-red pt-6">
+              <div key={v.title} className="parchment-card p-6 border-t-2 border-ht-red">
+                <v.Icon className="w-8 h-8 text-ht-red mb-4" />
                 <h3 className="font-display text-xl uppercase tracking-wider text-ht-cream mb-3">
                   {v.title}
                 </h3>
@@ -86,11 +100,11 @@ export default function AboutPage() {
       {/* Visit info */}
       <section className="py-24 px-4">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-3xl font-bold uppercase text-ht-cream mb-8">
+          <BannerRibbon className="w-48 sm:w-64 h-12 mb-8">
             Visit Us
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 font-body text-ht-cream/80">
-            <div>
+          </BannerRibbon>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 font-body text-ht-cream/80 mt-8">
+            <div className="parchment-card p-6">
               <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-3">
                 Location
               </p>
@@ -99,14 +113,14 @@ export default function AboutPage() {
                 Portland, OR 97215
               </address>
             </div>
-            <div>
+            <div className="parchment-card p-6">
               <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-3">
                 Hours
               </p>
               <p>Open daily, 11am – 7pm</p>
               <p className="mt-2 text-ht-cream/50 text-sm">Walk-ins always welcome.</p>
             </div>
-            <div>
+            <div className="parchment-card p-6">
               <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-3">
                 Phone
               </p>
@@ -114,7 +128,7 @@ export default function AboutPage() {
                 (503) 236-3440
               </a>
             </div>
-            <div>
+            <div className="parchment-card p-6">
               <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-3">
                 Email
               </p>
@@ -130,13 +144,13 @@ export default function AboutPage() {
           <div className="mt-12 flex flex-col sm:flex-row gap-4">
             <Link
               href="/artists"
-              className="px-6 py-3 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors text-center"
+              className="stamp-btn px-6 py-3 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors text-center"
             >
               Meet the Artists
             </Link>
             <Link
               href="/get-what-you-get"
-              className="px-6 py-3 border border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors text-center"
+              className="stamp-btn px-6 py-3 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors text-center"
             >
               Get What You Get
             </Link>

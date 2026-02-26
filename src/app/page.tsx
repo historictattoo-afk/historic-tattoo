@@ -1,11 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  BannerRibbon,
+  OrnamentalDivider,
+  StampBadge,
+  AnchorIcon,
+  RoseIcon,
+  EagleIcon,
+  HeartIcon,
+  DiceIcon,
+  LightningIcon,
+  TradStar,
+  CornerFrameSVG,
+  PinAccent,
+} from "@/components/Decorations";
 
 const trustStats = [
-  { num: "17+", label: "Years in Business" },
-  { num: "109", label: "Years Combined Experience" },
-  { num: "8+", label: "Artists on Staff" },
-  { num: "1,000s", label: "Hand-Painted Designs" },
+  { num: "17+", label: "Years in Business", icon: "anchor" },
+  { num: "109", label: "Years Combined Experience", icon: "star" },
+  { num: "8+", label: "Artists on Staff", icon: "eagle" },
+  { num: "1,000s", label: "Hand-Painted Designs", icon: "rose" },
 ];
 
 const services = [
@@ -13,6 +27,7 @@ const services = [
     name: "Get What You Get",
     price: "$100",
     tag: "The Classic",
+    icon: "dice",
     description:
       "Buy a token, spin the wheel, walk out with a traditional American tattoo. Every result is a winner — no exceptions.",
     cta: "Learn More",
@@ -21,6 +36,7 @@ const services = [
     name: "GWYG Deluxe",
     price: "$200",
     tag: "Go Big",
+    icon: "dice",
     description:
       "Same game, bigger canvas. Let fate choose a bolder, larger traditional piece from our extended flash collection.",
     cta: "Learn More",
@@ -29,6 +45,7 @@ const services = [
     name: "Tattoo Plinko",
     price: "$200",
     tag: "Let It Drop",
+    icon: "lightning",
     description:
       "Drop the puck, let physics decide. Portland's most dramatic tattoo experience — guaranteed to be a story.",
     cta: "Learn More",
@@ -74,7 +91,6 @@ const artists = [
   },
 ];
 
-// A curated selection of portfolio images for the Instagram-style grid
 const portfolioGrid = [
   "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260914078-GP6VEZ0QUIHLSBNVQ9VD/image0+%283%29.jpeg",
   "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752153066661-XCKV7C47MASE3QH8V23O/Screenshot%2B2025-07-10%2Bat%2B6.10.25%25E2%2580%25AFAM.jpg",
@@ -108,36 +124,48 @@ const reviews = [
   },
 ];
 
+function ServiceIcon({ type, className }: { type: string; className?: string }) {
+  if (type === "lightning") return <LightningIcon className={className} />;
+  return <DiceIcon className={className} />;
+}
+
+function TrustIcon({ type, className }: { type: string; className?: string }) {
+  switch (type) {
+    case "anchor": return <AnchorIcon className={className} />;
+    case "eagle": return <EagleIcon className={className} />;
+    case "rose": return <RoseIcon className={className} />;
+    default: return <TradStar className={className} />;
+  }
+}
+
 export default function Home() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-4 pt-8 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: "repeating-linear-gradient(45deg,#c0392b 0,#c0392b 1px,transparent 0,transparent 50%)",
-            backgroundSize: "20px 20px",
-          }}
-        />
+      <section className="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-4 pt-8 overflow-hidden diagonal-stripes">
+        {/* Background watermark */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none opacity-[0.03]">
+          <AnchorIcon className="w-full h-full text-ht-cream" />
+        </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-ht-red/5 blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          {/* Logo */}
+          {/* Logo with warm glow */}
           <div className="flex justify-center mb-8">
             <Image
               src="/logo.png"
               alt="Historic Tattoo Portland"
               width={220}
               height={220}
-              className="object-contain w-40 sm:w-56 drop-shadow-[0_0_24px_rgba(192,57,43,0.25)]"
+              className="object-contain w-40 sm:w-56 drop-shadow-[0_0_30px_rgba(212,160,23,0.2)]"
               priority
             />
           </div>
 
-          <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-4">
-            Portland, Oregon · Est. 2007
-          </p>
+          {/* Est. badge */}
+          <div className="flex justify-center mb-6">
+            <StampBadge>Est. 2007 · Portland, OR</StampBadge>
+          </div>
 
           <h1 className="font-display font-bold uppercase leading-tight text-4xl sm:text-5xl md:text-6xl text-ht-cream mb-4">
             Portland&apos;s Traditional<br />
@@ -150,27 +178,33 @@ export default function Home() {
           </p>
 
           <p className="font-display text-sm tracking-widest text-ht-gold uppercase mb-8">
-            ★★★★★ &nbsp;Rated on Google & Yelp
+            <TradStar className="w-3 h-3 inline text-ht-gold mr-1" />
+            <TradStar className="w-3 h-3 inline text-ht-gold mr-1" />
+            <TradStar className="w-3 h-3 inline text-ht-gold mr-1" />
+            <TradStar className="w-3 h-3 inline text-ht-gold mr-1" />
+            <TradStar className="w-3 h-3 inline text-ht-gold mr-2" />
+            Rated on Google & Yelp
           </p>
 
+          {/* Stamp-style CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
             <a
               href="tel:5032363440"
-              className="w-full sm:w-auto px-8 py-4 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
+              className="stamp-btn w-full sm:w-auto px-8 py-4 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
             >
               Call (503) 236-3440
             </a>
             <Link
               href="/get-what-you-get"
-              className="w-full sm:w-auto px-8 py-4 border border-ht-cream/30 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors"
+              className="stamp-btn w-full sm:w-auto px-8 py-4 border-2 border-ht-cream/30 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors"
             >
-              Get What You Get →
+              Get What You Get
             </Link>
             <a
               href="https://maps.google.com/?q=2001+SE+50th+Ave,+Portland,+OR+97215"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 border border-ht-cream/30 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors"
+              className="stamp-btn w-full sm:w-auto px-8 py-4 border-2 border-ht-cream/30 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors"
             >
               Get Directions
             </a>
@@ -187,12 +221,13 @@ export default function Home() {
       </section>
 
       {/* ── Trust Bar ────────────────────────────────────── */}
-      <section className="bg-ht-red py-6 px-4">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <section className="bg-gradient-to-r from-ht-gold/90 via-ht-gold to-ht-gold/90 py-8 px-4 border-y-2 border-ht-gold/50">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {trustStats.map((s) => (
-            <div key={s.label}>
-              <p className="font-display text-3xl font-bold text-white">{s.num}</p>
-              <p className="font-display text-xs tracking-widest uppercase text-white/70">{s.label}</p>
+            <div key={s.label} className="flex flex-col items-center">
+              <TrustIcon type={s.icon} className="w-6 h-6 text-ht-black/60 mb-2" />
+              <p className="font-display text-3xl font-bold text-ht-black">{s.num}</p>
+              <p className="font-display text-xs tracking-widest uppercase text-ht-black/60">{s.label}</p>
             </div>
           ))}
         </div>
@@ -202,29 +237,37 @@ export default function Home() {
       <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-3">
+            <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-4">
               Portland&apos;s Most Unique Tattoo Experience
             </p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase text-ht-cream mb-4">
+            <BannerRibbon className="w-72 sm:w-96 h-14 mx-auto mb-6">
               Take Your Chances
-            </h2>
-            <p className="font-body text-ht-cream/60 max-w-xl mx-auto">
+            </BannerRibbon>
+            <p className="font-body text-ht-cream/60 max-w-xl mx-auto mt-4">
               No deliberating. No anxiety. Just you, a token, and a guaranteed great traditional tattoo.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            {services.map((s) => (
-              <div key={s.name} className="flash-card border border-ht-red/20 bg-ht-gray p-8 text-center flex flex-col group">
-                <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-2">{s.tag}</p>
-                <p className="font-display text-4xl font-bold text-ht-red mb-2 group-hover:text-ht-red-light transition-colors">
-                  {s.price}
-                </p>
-                <h3 className="font-display text-xl uppercase tracking-wider text-ht-cream mb-4">{s.name}</h3>
-                <p className="font-body text-sm text-ht-cream/60 leading-relaxed mb-6 flex-1">{s.description}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+            {services.map((s, i) => (
+              <div
+                key={s.name}
+                className="flash-sheet relative p-8 text-center flex flex-col group"
+                style={{ transform: `rotate(${i === 0 ? -1 : i === 2 ? 1 : 0}deg)` }}
+              >
+                <PinAccent />
+                {/* Service icon */}
+                <ServiceIcon type={s.icon} className="w-10 h-10 text-ht-red mx-auto mb-3" />
+                <p className="font-display text-xs tracking-widest uppercase text-ht-green mb-2">{s.tag}</p>
+                {/* Price badge */}
+                <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-ht-red flex items-center justify-center border-2 border-ht-black">
+                  <span className="font-display text-lg font-bold text-white">{s.price}</span>
+                </div>
+                <h3 className="font-display text-xl uppercase tracking-wider text-ht-black mb-4">{s.name}</h3>
+                <p className="font-body text-sm text-ht-black/60 leading-relaxed mb-6 flex-1">{s.description}</p>
                 <Link
                   href="/get-what-you-get"
-                  className="block px-4 py-2 border border-ht-red/40 text-ht-red font-display text-xs tracking-widest uppercase hover:bg-ht-red hover:text-white transition-colors"
+                  className="block px-4 py-2 bg-ht-red text-white font-display text-xs tracking-widest uppercase hover:bg-ht-red-light transition-colors border-2 border-ht-black"
                 >
                   {s.cta}
                 </Link>
@@ -239,21 +282,22 @@ export default function Home() {
       </section>
 
       {/* ── Portfolio / Work ─────────────────────────────── */}
-      <section className="py-24 px-4 bg-ht-gray border-y border-ht-red/10">
+      <section className="py-24 px-4 bg-ht-gray border-y-2 border-ht-red/20 relative">
+        <CornerFrameSVG />
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-3">The Work</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase text-ht-cream mb-4">
+            <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-4">The Work</p>
+            <BannerRibbon className="w-80 sm:w-[28rem] h-14 mx-auto mb-4">
               Traditional Done Right
-            </h2>
-            <p className="font-body text-ht-cream/60 max-w-xl mx-auto">
+            </BannerRibbon>
+            <p className="font-body text-ht-cream/60 max-w-xl mx-auto mt-4">
               Bold lines, solid color, timeless imagery. Every tattoo that leaves our shop is built to last a lifetime.
             </p>
           </div>
 
           <div className="grid grid-cols-3 gap-1 sm:gap-2 mb-10">
             {portfolioGrid.map((src, i) => (
-              <div key={i} className="relative aspect-square overflow-hidden bg-ht-black group">
+              <div key={i} className="relative aspect-square overflow-hidden bg-ht-black group warm-glow">
                 <Image
                   src={`${src}?format=500w`}
                   alt={`Traditional tattoo work from Historic Tattoo Portland`}
@@ -261,6 +305,7 @@ export default function Home() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 33vw, 20vw"
                 />
+                <div className="absolute inset-0 border border-ht-gold/10 pointer-events-none" />
               </div>
             ))}
           </div>
@@ -270,9 +315,9 @@ export default function Home() {
               href="https://www.instagram.com/historictattoo/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-4 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
+              className="stamp-btn inline-block px-8 py-4 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
             >
-              See More on Instagram →
+              See More on Instagram
             </a>
           </div>
         </div>
@@ -300,13 +345,13 @@ export default function Home() {
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <Link
                 href="/about"
-                className="px-6 py-3 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors text-center"
+                className="stamp-btn px-6 py-3 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors text-center"
               >
                 Our Story
               </Link>
               <Link
                 href="/artists"
-                className="px-6 py-3 border border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors text-center"
+                className="stamp-btn px-6 py-3 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors text-center"
               >
                 Meet the Artists
               </Link>
@@ -315,13 +360,13 @@ export default function Home() {
 
           <div className="grid grid-cols-2 gap-4">
             {[
-              { icon: "✦", title: "Walk-Ins Always Welcome", desc: "No appointment needed. Come in any day between 11am and 7pm." },
-              { icon: "✦", title: "Traditional American Style", desc: "Bold lines, solid color, classic imagery that lasts a lifetime." },
-              { icon: "✦", title: "17+ Years of Excellence", desc: "Portland's most trusted traditional tattoo shop since 2007." },
-              { icon: "✦", title: "109 Years Experience", desc: "Our team's combined experience means world-class tattooing every time." },
+              { Icon: AnchorIcon, title: "Walk-Ins Always Welcome", desc: "No appointment needed. Come in any day between 11am and 7pm." },
+              { Icon: RoseIcon, title: "Traditional American Style", desc: "Bold lines, solid color, classic imagery that lasts a lifetime." },
+              { Icon: EagleIcon, title: "17+ Years of Excellence", desc: "Portland's most trusted traditional tattoo shop since 2007." },
+              { Icon: HeartIcon, title: "109 Years Experience", desc: "Our team's combined experience means world-class tattooing every time." },
             ].map((f) => (
-              <div key={f.title} className="border border-ht-red/20 p-5 bg-ht-gray">
-                <p className="text-ht-red text-xl mb-3">{f.icon}</p>
+              <div key={f.title} className="parchment-card p-5 relative">
+                <f.Icon className="w-8 h-8 text-ht-red mb-3" />
                 <h3 className="font-display text-sm uppercase tracking-wider text-ht-cream mb-2">{f.title}</h3>
                 <p className="font-body text-xs text-ht-cream/50 leading-relaxed">{f.desc}</p>
               </div>
@@ -331,11 +376,12 @@ export default function Home() {
       </section>
 
       {/* ── Artists ──────────────────────────────────────── */}
-      <section className="py-24 px-4 bg-ht-gray border-y border-ht-red/10">
+      <section className="py-24 px-4 bg-ht-gray border-y-2 border-ht-red/20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-3">109 Years Combined Experience</p>
+            <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-4">109 Years Combined Experience</p>
             <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase text-ht-cream">Our Artists</h2>
+            <OrnamentalDivider className="mt-4" />
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
@@ -345,9 +391,11 @@ export default function Home() {
                 href={artist.ig}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flash-card border border-ht-red/20 bg-ht-black p-4 text-center group"
+                className="flash-card parchment-card p-4 text-center group"
               >
-                <div className="relative w-20 h-20 rounded-full overflow-hidden mx-auto mb-3 border-2 border-ht-red/30 group-hover:border-ht-red transition-colors">
+                {/* Ornate circular frame */}
+                <div className="relative w-20 h-20 rounded-full overflow-hidden mx-auto mb-3 border-[3px] border-ht-red group-hover:border-ht-gold transition-colors">
+                  <div className="absolute inset-[3px] rounded-full border border-dashed border-ht-red/30 z-10 pointer-events-none" />
                   <Image
                     src={`${artist.photo}?format=300w`}
                     alt={artist.name}
@@ -369,7 +417,7 @@ export default function Home() {
               href="/artists"
               className="inline-block font-display text-sm tracking-widest uppercase text-ht-gold hover:text-ht-red transition-colors border-b border-ht-gold/40 hover:border-ht-red pb-1"
             >
-              View Full Artist Portfolios →
+              View Full Artist Portfolios
             </Link>
           </div>
         </div>
@@ -379,9 +427,14 @@ export default function Home() {
       <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-3">What People Are Saying</p>
+            <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-4">What People Are Saying</p>
             <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase text-ht-cream mb-4">
-              ★★★★★ Rated
+              <TradStar className="w-5 h-5 inline text-ht-gold" />
+              <TradStar className="w-5 h-5 inline text-ht-gold" />
+              <TradStar className="w-5 h-5 inline text-ht-gold" />
+              <TradStar className="w-5 h-5 inline text-ht-gold" />
+              <TradStar className="w-5 h-5 inline text-ht-gold" />
+              <span className="ml-3">Rated</span>
             </h2>
             <p className="font-body text-ht-cream/60">
               86+ reviews on Yelp and Google. Portland&apos;s most-loved traditional tattoo shop.
@@ -390,10 +443,11 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {reviews.map((r) => (
-              <div key={r.author} className="border border-ht-red/20 bg-ht-gray p-8">
+              <div key={r.author} className="parchment-card p-8 relative">
+                {/* Aged postcard style */}
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: r.rating }).map((_, i) => (
-                    <span key={i} className="text-ht-gold text-lg">★</span>
+                    <TradStar key={i} className="w-4 h-4 text-ht-gold" />
                   ))}
                 </div>
                 <p className="font-body text-ht-cream/80 text-sm leading-relaxed mb-6 italic">
@@ -401,7 +455,10 @@ export default function Home() {
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="font-display text-xs tracking-widest uppercase text-ht-cream/50">{r.author}</span>
-                  <span className="font-display text-xs tracking-widest uppercase text-ht-red/60">{r.source}</span>
+                  {/* Source stamp badge */}
+                  <span className="font-display text-[10px] tracking-widest uppercase text-ht-red border border-ht-red/30 px-2 py-0.5 rounded-sm">
+                    {r.source}
+                  </span>
                 </div>
               </div>
             ))}
@@ -412,7 +469,7 @@ export default function Home() {
               href="https://www.yelp.com/biz/historic-tattoo-portland"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 border border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors text-center"
+              className="stamp-btn px-6 py-3 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors text-center"
             >
               Read Reviews on Yelp
             </a>
@@ -420,7 +477,7 @@ export default function Home() {
               href="https://maps.google.com/?q=Historic+Tattoo+Portland"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 border border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors text-center"
+              className="stamp-btn px-6 py-3 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors text-center"
             >
               Read Reviews on Google
             </a>
@@ -429,33 +486,33 @@ export default function Home() {
       </section>
 
       {/* ── Instagram Section ────────────────────────────── */}
-      <section className="py-24 px-4 bg-ht-gray border-y border-ht-red/10">
+      <section className="py-24 px-4 bg-ht-gray border-y-2 border-ht-red/20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-3">Follow Along</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase text-ht-cream mb-2">
+            <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-4">Follow Along</p>
+            <BannerRibbon className="w-64 sm:w-80 h-14 mx-auto mb-4">
               @historictattoo
-            </h2>
-            <p className="font-body text-ht-cream/50 mb-2">38,000+ followers · Portland, OR</p>
+            </BannerRibbon>
+            <p className="font-body text-ht-cream/50 mb-2 mt-4">38,000+ followers · Portland, OR</p>
             <a
               href="https://www.instagram.com/historictattoo/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-2 px-6 py-2 bg-ht-red text-white font-display text-xs tracking-widest uppercase hover:bg-ht-red-light transition-colors"
+              className="stamp-btn inline-block mt-2 px-6 py-2 bg-ht-red text-white font-display text-xs tracking-widest uppercase hover:bg-ht-red-light transition-colors"
             >
               Follow on Instagram
             </a>
           </div>
 
-          {/* Image grid styled like Instagram */}
-          <div className="grid grid-cols-3 gap-1 sm:gap-2 mb-8">
+          {/* Flash-sheet-style border grid */}
+          <div className="grid grid-cols-3 gap-1 sm:gap-2 mb-8 grunge-border p-1 sm:p-2">
             {portfolioGrid.slice(0, 9).map((src, i) => (
               <a
                 key={i}
                 href="https://www.instagram.com/historictattoo/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative aspect-square overflow-hidden bg-ht-black group block"
+                className="relative aspect-square overflow-hidden bg-ht-black group block warm-glow"
               >
                 <Image
                   src={`${src}?format=500w`}
@@ -465,7 +522,7 @@ export default function Home() {
                   sizes="(max-width: 768px) 33vw, 20vw"
                 />
                 <div className="absolute inset-0 bg-ht-black/0 group-hover:bg-ht-black/30 transition-colors flex items-center justify-center">
-                  <span className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">♥</span>
+                  <HeartIcon className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </a>
             ))}
@@ -478,32 +535,36 @@ export default function Home() {
               rel="noopener noreferrer"
               className="font-display text-sm tracking-widest uppercase text-ht-gold hover:text-ht-red transition-colors border-b border-ht-gold/40 hover:border-ht-red pb-1"
             >
-              View All Posts on Instagram →
+              View All Posts on Instagram
             </a>
           </div>
         </div>
       </section>
 
       {/* ── Visit / Map CTA ──────────────────────────────── */}
-      <section className="py-24 px-4">
+      <section className="py-24 px-4 relative">
+        <CornerFrameSVG />
         <div className="max-w-5xl mx-auto text-center">
           <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-3">Come See Us</p>
           <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase text-ht-cream mb-6">
             Walk In Today
           </h2>
+          <OrnamentalDivider className="mb-6" />
           <p className="font-body text-ht-cream/70 text-lg mb-10 max-w-xl mx-auto">
             No appointment needed. Just show up between 11am and 7pm any day of the week and our artists will take care of you.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto">
-            <div className="border border-ht-red/20 p-6 bg-ht-gray">
+            <div className="parchment-card p-6">
+              <AnchorIcon className="w-6 h-6 text-ht-gold mx-auto mb-3" />
               <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-3">Address</p>
               <p className="font-body text-ht-cream/80 text-sm leading-relaxed">
                 2001 SE 50th Ave<br />Portland, OR 97215<br />
                 <span className="text-ht-cream/40 text-xs">SE Portland · Near SE Division</span>
               </p>
             </div>
-            <div className="border border-ht-red/20 p-6 bg-ht-gray">
+            <div className="parchment-card p-6">
+              <TradStar className="w-6 h-6 text-ht-gold mx-auto mb-3" />
               <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-3">Hours</p>
               <p className="font-body text-ht-cream/80 text-sm">
                 Open Every Day<br />
@@ -511,7 +572,8 @@ export default function Home() {
                 <span className="text-ht-cream/40 text-xs">Walk-ins always welcome</span>
               </p>
             </div>
-            <div className="border border-ht-red/20 p-6 bg-ht-gray">
+            <div className="parchment-card p-6">
+              <HeartIcon className="w-6 h-6 text-ht-gold mx-auto mb-3" />
               <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-3">Contact</p>
               <a href="tel:5032363440" className="font-body text-ht-cream/80 text-sm hover:text-ht-red transition-colors block">
                 (503) 236-3440
@@ -525,7 +587,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:5032363440"
-              className="px-8 py-4 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
+              className="stamp-btn px-8 py-4 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
             >
               Call (503) 236-3440
             </a>
@@ -533,7 +595,7 @@ export default function Home() {
               href="https://maps.google.com/?q=2001+SE+50th+Ave,+Portland,+OR+97215"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 border border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors"
+              className="stamp-btn px-8 py-4 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors"
             >
               Get Directions
             </a>

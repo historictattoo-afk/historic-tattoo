@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Oswald, Inter, Playfair_Display } from "next/font/google";
+import { Oswald, Inter, UnifrakturCook } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -17,11 +17,10 @@ const inter = Inter({
   weight: ["300", "400", "500"],
 });
 
-const playfair = Playfair_Display({
+const unifraktur = UnifrakturCook({
   subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
+  variable: "--font-blackletter",
+  weight: ["700"],
 });
 
 export const metadata: Metadata = {
@@ -139,7 +138,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${oswald.variable} ${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${oswald.variable} ${inter.variable} ${unifraktur.variable}`}>
       <head>
         <script
           type="application/ld+json"

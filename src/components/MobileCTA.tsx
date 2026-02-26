@@ -33,7 +33,7 @@ export default function MobileCTA() {
     >
       <a
         href="tel:5032363440"
-        className="flex-1 max-w-[160px] flex items-center justify-center gap-2 px-5 py-3 bg-ht-red text-white font-display text-sm tracking-widest uppercase rounded-full shadow-lg shadow-ht-red/30 hover:bg-ht-red-light active:scale-95 transition-all"
+        className="stamp-btn flex-1 max-w-[160px] flex items-center justify-center gap-2 px-5 py-3 bg-ht-red text-white font-display text-sm tracking-widest uppercase rounded-full shadow-lg shadow-ht-red/30 hover:bg-ht-red-light active:scale-95 transition-all border-2 border-ht-red-light/30"
       >
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
@@ -44,7 +44,7 @@ export default function MobileCTA() {
         href="https://www.instagram.com/historictattoo/"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-1 max-w-[160px] flex items-center justify-center gap-2 px-5 py-3 bg-ht-gray border border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase rounded-full shadow-lg shadow-black/30 hover:border-ht-red active:scale-95 transition-all"
+        className="stamp-btn flex-1 max-w-[160px] flex items-center justify-center gap-2 px-5 py-3 bg-ht-gray border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase rounded-full shadow-lg shadow-black/30 hover:border-ht-red active:scale-95 transition-all"
       >
         {/* Instagram icon */}
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

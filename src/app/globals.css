@@ -5,7 +5,7 @@
 :root {
   --font-oswald: "Oswald", sans-serif;
   --font-inter: "Inter", sans-serif;
-  --font-playfair: "Playfair Display", serif;
+  --font-blackletter: "UnifrakturCook", serif;
 }
 
 html {
@@ -13,11 +13,16 @@ html {
 }
 
 body {
-  background-color: #0e0d0b;
-  color: #f5f0e8;
+  background-color: #0a0a08;
+  color: #f5edd6;
+  /* Subtle parchment/aged paper noise texture via CSS gradient */
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(212, 160, 23, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(196, 30, 30, 0.02) 0%, transparent 50%),
+    repeating-conic-gradient(rgba(245, 237, 214, 0.015) 0% 25%, transparent 0% 50%) 0 0 / 4px 4px;
 }
 
-/* Divider ornament */
+/* ── Ornament Divider (gold gradient) ─────────────── */
 .ornament-divider {
   display: flex;
   align-items: center;
@@ -32,17 +37,162 @@ body {
   background: linear-gradient(to right, transparent, #d4a017, transparent);
 }
 
-/* Flash card hover effect */
+/* ── Traditional Tattoo Divider ───────────────────── */
+.trad-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+.trad-divider::before,
+.trad-divider::after {
+  content: "";
+  flex: 1;
+  max-width: 120px;
+  height: 2px;
+  background: linear-gradient(to var(--dir, right), #c41e1e, transparent);
+}
+
+.trad-divider::before {
+  --dir: right;
+}
+
+.trad-divider::after {
+  --dir: left;
+}
+
+/* ── Flash Card Styles ────────────────────────────── */
 .flash-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .flash-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(192, 57, 43, 0.3);
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 40px rgba(196, 30, 30, 0.2),
+    0 0 0 1px rgba(196, 30, 30, 0.3);
 }
 
-/* Red underline on hover links */
+/* Flash sheet pinned-to-wall style */
+.flash-sheet {
+  position: relative;
+  background: linear-gradient(145deg, #f5edd6, #ebe2c8);
+  border: 2px solid #1a1814;
+  box-shadow:
+    3px 3px 0 #1a1814,
+    inset 0 0 30px rgba(26, 24, 20, 0.1);
+}
+
+.flash-sheet::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 12px;
+  background: #c41e1e;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+/* ── Stamp Button Style ───────────────────────────── */
+.stamp-btn {
+  position: relative;
+  border: 3px solid currentColor;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.2s ease;
+}
+
+.stamp-btn::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid currentColor;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.stamp-btn:hover {
+  transform: rotate(-1deg) scale(1.02);
+}
+
+/* ── Grunge Border Treatment ──────────────────────── */
+.grunge-border {
+  border: 2px solid rgba(196, 30, 30, 0.3);
+  outline: 1px solid rgba(196, 30, 30, 0.1);
+  outline-offset: 3px;
+  box-shadow:
+    inset 0 0 0 1px rgba(196, 30, 30, 0.05),
+    0 0 0 4px rgba(10, 10, 8, 0.5);
+}
+
+/* ── Vintage Badge/Stamp ──────────────────────────── */
+.vintage-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #d4a017;
+  border-radius: 50%;
+  padding: 1rem;
+  position: relative;
+}
+
+.vintage-badge::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed rgba(212, 160, 23, 0.5);
+  border-radius: 50%;
+}
+
+/* ── Parchment Card ───────────────────────────────── */
+.parchment-card {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 237, 214, 0.08) 0%,
+    rgba(245, 237, 214, 0.03) 100%
+  );
+  border: 1px solid rgba(212, 160, 23, 0.15);
+  position: relative;
+}
+
+.parchment-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-conic-gradient(rgba(245, 237, 214, 0.02) 0% 25%, transparent 0% 50%) 0 0 / 3px 3px;
+  pointer-events: none;
+}
+
+/* ── Scroll Reveal Animation ──────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+/* ── Warm Glow on Hover ───────────────────────────── */
+.warm-glow:hover {
+  box-shadow: 0 0 30px rgba(212, 160, 23, 0.15), 0 0 60px rgba(196, 30, 30, 0.08);
+}
+
+/* ── Red Underline Nav Links ──────────────────────── */
 .nav-link {
   position: relative;
 }
@@ -54,7 +204,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #c0392b;
+  background-color: #c41e1e;
   transition: width 0.25s ease;
 }
 
@@ -62,14 +212,57 @@ body {
   width: 100%;
 }
 
-/* Scrollbar */
+/* ── Corner Frame Decoration ──────────────────────── */
+.corner-frame {
+  position: relative;
+}
+
+.corner-frame::before,
+.corner-frame::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: rgba(212, 160, 23, 0.4);
+  pointer-events: none;
+}
+
+.corner-frame::before {
+  top: -4px;
+  left: -4px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-color: inherit;
+}
+
+.corner-frame::after {
+  bottom: -4px;
+  right: -4px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  border-color: inherit;
+}
+
+/* ── Diagonal Stripe Pattern ──────────────────────── */
+.diagonal-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(196, 30, 30, 0.05) 0,
+    rgba(196, 30, 30, 0.05) 1px,
+    transparent 0,
+    transparent 50%
+  );
+  background-size: 20px 20px;
+}
+
+/* ── Scrollbar ────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0e0d0b;
+  background: #0a0a08;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c0392b;
+  background: #c41e1e;
   border-radius: 3px;
 }

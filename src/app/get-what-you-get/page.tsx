@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  BannerRibbon,
+  OrnamentalDivider,
+  StampBadge,
+  DiceIcon,
+  LightningIcon,
+  PinAccent,
+} from "@/components/Decorations";
 
 export const metadata: Metadata = {
   title: "Get What You Get | Historic Tattoo — Portland, OR",
@@ -12,6 +20,7 @@ const options = [
     name: "Get What You Get",
     price: "$100",
     tag: "The Classic",
+    icon: "dice",
     description:
       "Buy a token, get what you get. You'll walk out with a traditional American tattoo chosen by fate — and you'll love it. Every result is a winner.",
     details: [
@@ -25,6 +34,7 @@ const options = [
     name: "Get What You Get Deluxe",
     price: "$200",
     tag: "Go Big",
+    icon: "dice",
     description:
       "Same game, bigger prize. The Deluxe gives you a larger, bolder traditional tattoo from our extended collection of hand-painted flash.",
     details: [
@@ -38,6 +48,7 @@ const options = [
     name: "Tattoo Plinko",
     price: "$200",
     tag: "Let It Drop",
+    icon: "lightning",
     description:
       "Drop the puck down our custom Plinko board and let physics decide your new tattoo. It's the most dramatic way to get inked in Portland.",
     details: [
@@ -49,22 +60,28 @@ const options = [
   },
 ];
 
+function OptionIcon({ type, className }: { type: string; className?: string }) {
+  if (type === "lightning") return <LightningIcon className={className} />;
+  return <DiceIcon className={className} />;
+}
+
 export default function GWYGPage() {
   return (
     <>
       {/* Page header */}
-      <section className="pt-32 pb-16 px-4 text-center border-b border-ht-red/10">
-        <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-3">
-          Our Signature Experience
-        </p>
-        <h1 className="font-display font-bold uppercase leading-none">
-          <span className="block text-4xl sm:text-6xl text-ht-cream tracking-tight">
-            Get What
-          </span>
-          <span className="block text-4xl sm:text-6xl text-ht-red tracking-tight">
-            You Get
-          </span>
-        </h1>
+      <section className="pt-32 pb-16 px-4 text-center border-b-2 border-ht-red/20 diagonal-stripes relative">
+        <div className="relative z-10">
+          <StampBadge className="mb-4">Our Signature</StampBadge>
+          <h1 className="font-display font-bold uppercase leading-none mt-4">
+            <span className="block text-4xl sm:text-6xl text-ht-cream tracking-tight">
+              Get What
+            </span>
+            <span className="block text-4xl sm:text-6xl text-ht-red tracking-tight">
+              You Get
+            </span>
+          </h1>
+          <OrnamentalDivider className="mt-4" />
+        </div>
       </section>
 
       {/* Intro */}
@@ -82,31 +99,37 @@ export default function GWYGPage() {
         </div>
       </section>
 
-      {/* Options */}
+      {/* Options — flash sheet style cards */}
       <section className="pb-24 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {options.map((opt) => (
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {options.map((opt, i) => (
             <div
               key={opt.name}
-              className="flash-card border border-ht-red/20 bg-ht-gray flex flex-col"
+              className="flash-sheet relative flex flex-col"
+              style={{ transform: `rotate(${i === 0 ? -1 : i === 2 ? 1 : 0}deg)` }}
             >
-              <div className="border-b border-ht-red/20 p-8">
-                <p className="font-display text-xs tracking-widest uppercase text-ht-gold mb-2">
+              <PinAccent />
+              <div className="border-b-2 border-ht-black/20 p-8 text-center">
+                <OptionIcon type={opt.icon} className="w-10 h-10 text-ht-red mx-auto mb-3" />
+                <p className="font-display text-xs tracking-widest uppercase text-ht-green mb-2">
                   {opt.tag}
                 </p>
-                <h2 className="font-display text-2xl font-bold uppercase text-ht-cream mb-1">
+                <h2 className="font-display text-2xl font-bold uppercase text-ht-black mb-3">
                   {opt.name}
                 </h2>
-                <p className="font-display text-4xl font-bold text-ht-red">{opt.price}</p>
+                {/* Price badge */}
+                <div className="w-16 h-16 mx-auto rounded-full bg-ht-red flex items-center justify-center border-2 border-ht-black">
+                  <span className="font-display text-lg font-bold text-white">{opt.price}</span>
+                </div>
               </div>
 
               <div className="p-8 flex-1 flex flex-col gap-6">
-                <p className="font-body text-ht-cream/70 text-sm leading-relaxed">
+                <p className="font-body text-ht-black/70 text-sm leading-relaxed">
                   {opt.description}
                 </p>
                 <ul className="space-y-2 mt-auto">
                   {opt.details.map((d) => (
-                    <li key={d} className="flex items-start gap-3 font-body text-sm text-ht-cream/60">
+                    <li key={d} className="flex items-start gap-3 font-body text-sm text-ht-black/60">
                       <span className="text-ht-red mt-0.5 flex-shrink-0">&#9670;</span>
                       {d}
                     </li>
@@ -119,13 +142,15 @@ export default function GWYGPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-4 bg-ht-gray border-y border-ht-red/10">
+      <section className="py-24 px-4 bg-ht-gray border-y-2 border-ht-red/20">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-3xl font-bold uppercase text-ht-cream mb-12 text-center">
-            Common Questions
-          </h2>
+          <div className="text-center mb-12">
+            <BannerRibbon className="w-72 sm:w-80 h-12 mx-auto">
+              Common Questions
+            </BannerRibbon>
+          </div>
 
-          <div className="space-y-8">
+          <div className="space-y-8 mt-8">
             {[
               {
                 q: "Can I choose where it goes?",
@@ -148,7 +173,7 @@ export default function GWYGPage() {
                 a: "You will. But if you really can't get past it, come talk to us. We're reasonable people who want you to leave happy.",
               },
             ].map((faq) => (
-              <div key={faq.q} className="border-b border-ht-red/10 pb-8">
+              <div key={faq.q} className="parchment-card p-6">
                 <h3 className="font-display text-lg uppercase tracking-wider text-ht-cream mb-3">
                   {faq.q}
                 </h3>
@@ -165,6 +190,7 @@ export default function GWYGPage() {
           <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase text-ht-cream mb-6">
             Ready to Take Your Chances?
           </h2>
+          <OrnamentalDivider className="mb-6" />
           <p className="font-body text-ht-cream/60 mb-10">
             Walk in any day. Bring $100 or $200. Leave with a tattoo you&apos;ll tell stories about.
           </p>
@@ -173,13 +199,13 @@ export default function GWYGPage() {
               href="https://maps.google.com/?q=2001+SE+50th+Ave,+Portland,+OR+97215"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
+              className="stamp-btn px-8 py-4 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
             >
               Get Directions
             </a>
             <Link
               href="/artists"
-              className="px-8 py-4 border border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors"
+              className="stamp-btn px-8 py-4 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors"
             >
               Meet the Artists
             </Link>

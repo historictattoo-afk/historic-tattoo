@@ -1,15 +1,22 @@
 import Link from "next/link";
+import { OrnamentalDivider } from "./Decorations";
 
 export default function Footer() {
   return (
-    <footer className="bg-ht-gray border-t border-ht-red/20 mt-24">
+    <footer className="bg-ht-gray border-t-2 border-ht-red/30 mt-24 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+        {/* Ornamental top divider */}
+        <OrnamentalDivider className="mb-12" />
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <h3 className="font-display text-xl font-bold tracking-widest text-ht-cream uppercase mb-4">
+            <h3 className="font-display text-xl font-bold tracking-widest text-ht-cream uppercase mb-2">
               Historic Tattoo
             </h3>
+            <p className="font-display text-[10px] tracking-[0.3em] text-ht-gold uppercase mb-4">
+              Portland, Oregon · Est. 2007
+            </p>
             <p className="text-ht-cream/60 text-sm font-body leading-relaxed">
               Portland&apos;s home of traditional American tattooing since 2007.
               Thousands of hand-painted designs plus custom work.
@@ -75,7 +82,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-ht-red/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-ht-cream/30 font-body tracking-widest uppercase">
-            © {new Date().getFullYear()} Historic Tattoo. All rights reserved.
+            &copy; {new Date().getFullYear()} Historic Tattoo. All rights reserved.
           </p>
           <nav className="flex gap-6">
             {[

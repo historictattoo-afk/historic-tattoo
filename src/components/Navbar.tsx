@@ -17,27 +17,29 @@ export default function Navbar() {
   return (
     <>
       {/* Top bar — phone + hours always visible */}
-      <div className="bg-ht-red text-white text-xs font-display tracking-widest uppercase text-center py-2 px-4">
+      <div className="bg-ht-red text-white text-xs font-display tracking-widest uppercase text-center py-2 px-4 border-b-2 border-ht-red-light/30">
         <a href="tel:5032363440" className="hover:text-ht-cream transition-colors">
+          <span className="text-ht-gold mr-2">&#9733;</span>
           Walk-ins Welcome Daily · Open 11am–7pm · (503) 236-3440
+          <span className="text-ht-gold ml-2">&#9733;</span>
         </a>
       </div>
 
-      <header className="sticky top-0 left-0 right-0 z-50 bg-ht-black/95 backdrop-blur-sm border-b border-ht-red/20">
+      <header className="sticky top-0 left-0 right-0 z-50 bg-ht-black/95 backdrop-blur-sm border-b-2 border-ht-red/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <Image
               src="/logo.png"
               alt="Historic Tattoo Portland"
               width={52}
               height={52}
-              className="object-contain h-12 w-12"
+              className="object-contain h-12 w-12 drop-shadow-[0_0_8px_rgba(196,30,30,0.3)]"
               priority
             />
             <span className="hidden sm:flex flex-col leading-none">
               <span className="font-display text-sm font-bold tracking-widest text-ht-cream uppercase">Historic Tattoo</span>
-              <span className="font-display text-xs tracking-[0.2em] text-ht-gold uppercase">Portland, OR</span>
+              <span className="font-display text-[10px] tracking-[0.25em] text-ht-gold uppercase">Portland, OR · Est. 2007</span>
             </span>
           </Link>
 
@@ -54,7 +56,7 @@ export default function Navbar() {
             ))}
             <a
               href="tel:5032363440"
-              className="ml-4 px-4 py-2 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
+              className="stamp-btn ml-4 px-5 py-2 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors"
             >
               Call Now
             </a>
@@ -76,7 +78,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {open && (
-          <nav className="md:hidden bg-ht-gray border-t border-ht-red/20 px-4 py-6 flex flex-col gap-4">
+          <nav className="md:hidden bg-ht-gray border-t-2 border-ht-red/30 px-4 py-6 flex flex-col gap-4">
             {links.map((l) => (
               <Link
                 key={l.href}
@@ -89,7 +91,7 @@ export default function Navbar() {
             ))}
             <a
               href="tel:5032363440"
-              className="mt-2 px-6 py-3 bg-ht-red text-white font-display text-sm tracking-widest uppercase text-center hover:bg-ht-red-light transition-colors"
+              className="stamp-btn mt-2 px-6 py-3 bg-ht-red text-white font-display text-sm tracking-widest uppercase text-center hover:bg-ht-red-light transition-colors"
             >
               Call (503) 236-3440
             </a>
@@ -97,7 +99,7 @@ export default function Navbar() {
               href="https://maps.google.com/?q=2001+SE+50th+Ave,+Portland,+OR+97215"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 border border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase text-center hover:border-ht-red transition-colors"
+              className="stamp-btn px-6 py-3 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase text-center hover:border-ht-red transition-colors"
             >
               Get Directions
             </a>

@@ -9,17 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "ht-black": "#0e0d0b",
-        "ht-red": "#c0392b",
-        "ht-red-light": "#e74c3c",
+        "ht-black": "#0a0a08",
+        "ht-red": "#c41e1e",
+        "ht-red-light": "#e63232",
         "ht-gold": "#d4a017",
-        "ht-cream": "#f5f0e8",
-        "ht-gray": "#2a2825",
+        "ht-cream": "#f5edd6",
+        "ht-gray": "#1a1814",
+        "ht-green": "#1a5e3a",
+        "ht-navy": "#1c2733",
       },
       fontFamily: {
         display: ["var(--font-oswald)", "sans-serif"],
         body: ["var(--font-inter)", "sans-serif"],
-        serif: ["var(--font-playfair)", "Georgia", "serif"],
+        blackletter: ["var(--font-blackletter)", "serif"],
       },
     },
   },

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { OrnamentalDivider, StampBadge } from "@/components/Decorations";
 
 export const metadata: Metadata = {
   title: "Tattoo Artists | Historic Tattoo Portland, OR",
@@ -107,12 +108,15 @@ const artists = [
 export default function ArtistsPage() {
   return (
     <>
-      <section className="pt-32 pb-16 px-4 text-center border-b border-ht-red/10">
-        <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-3">109 Years Combined Experience</p>
-        <h1 className="font-display text-5xl sm:text-7xl font-bold uppercase text-ht-cream mb-4">Our Artists</h1>
-        <p className="font-body text-ht-cream/60 max-w-xl mx-auto">
-          Eight traditional American tattoo artists. Click any card to view their work on Instagram, or message them directly to book an appointment.
-        </p>
+      <section className="pt-32 pb-16 px-4 text-center border-b-2 border-ht-red/20 diagonal-stripes relative">
+        <div className="relative z-10">
+          <StampBadge className="mb-4">109 Years Combined</StampBadge>
+          <h1 className="font-display text-5xl sm:text-7xl font-bold uppercase text-ht-cream mb-4 mt-4">Our Artists</h1>
+          <p className="font-body text-ht-cream/60 max-w-xl mx-auto">
+            Eight traditional American tattoo artists. Click any card to view their work on Instagram, or message them directly to book an appointment.
+          </p>
+          <OrnamentalDivider className="mt-4" />
+        </div>
       </section>
 
       <section className="py-24 px-4">
@@ -122,42 +126,50 @@ export default function ArtistsPage() {
               {/* Artist info */}
               <div className={idx % 2 === 1 ? "lg:col-start-2" : ""}>
                 <div className="flex items-center gap-6 mb-6">
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-ht-red flex-shrink-0">
-                    {artist.photo ? (
-                      <Image
-                        src={`${artist.photo}?format=300w`}
-                        alt={artist.name}
-                        fill
-                        className="object-cover"
-                        sizes="96px"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-ht-gray flex items-center justify-center">
-                        <span className="font-display text-3xl font-bold text-ht-red/40">{artist.name.charAt(0)}</span>
-                      </div>
-                    )}
+                  {/* Ornate circular frame with decorative ring */}
+                  <div className="relative w-24 h-24 rounded-full flex-shrink-0">
+                    <div className="absolute inset-0 rounded-full border-[3px] border-ht-red" />
+                    <div className="absolute inset-[5px] rounded-full border border-dashed border-ht-gold/40" />
+                    <div className="absolute inset-[8px] rounded-full overflow-hidden">
+                      {artist.photo ? (
+                        <Image
+                          src={`${artist.photo}?format=300w`}
+                          alt={artist.name}
+                          fill
+                          className="object-cover"
+                          sizes="96px"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-ht-gray flex items-center justify-center">
+                          <span className="font-display text-3xl font-bold text-ht-red/40">{artist.name.charAt(0)}</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div>
                     <h2 className="font-display text-2xl uppercase tracking-wider text-ht-cream">{artist.name}</h2>
                     <p className="font-body text-xs text-ht-cream/40 mt-1">{artist.specialty}</p>
-                    <p className="font-display text-xs tracking-widest uppercase text-ht-gold mt-1">{artist.days}</p>
+                    {/* Availability stamp */}
+                    <span className="inline-block mt-2 font-display text-[10px] tracking-widest uppercase text-ht-gold border border-ht-gold/30 px-2 py-0.5 rounded-sm">
+                      {artist.days}
+                    </span>
                   </div>
                 </div>
                 <a
                   href={artist.ig}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-6 py-2 border border-ht-red/40 text-ht-red font-display text-xs tracking-widest uppercase hover:bg-ht-red hover:text-white transition-colors"
+                  className="stamp-btn inline-block px-6 py-2 border-2 border-ht-red/40 text-ht-red font-display text-xs tracking-widest uppercase hover:bg-ht-red hover:text-white transition-colors"
                 >
                   View on Instagram
                 </a>
               </div>
 
-              {/* Portfolio grid */}
+              {/* Portfolio grid — flash sheet style */}
               {artist.portfolio.length > 0 ? (
-                <div className={`grid grid-cols-2 gap-2 ${idx % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
+                <div className={`grid grid-cols-2 gap-2 grunge-border p-2 ${idx % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
                   {artist.portfolio.map((src, i) => (
-                    <div key={i} className="relative aspect-square overflow-hidden bg-ht-gray group">
+                    <div key={i} className="relative aspect-square overflow-hidden bg-ht-gray group warm-glow">
                       <Image
                         src={`${src}?format=500w`}
                         alt={`${artist.name} tattoo work`}
@@ -169,7 +181,7 @@ export default function ArtistsPage() {
                   ))}
                 </div>
               ) : (
-                <div className="border border-ht-red/10 bg-ht-gray p-12 text-center">
+                <div className="parchment-card p-12 text-center">
                   <p className="font-display text-sm tracking-widest uppercase text-ht-cream/30">
                     Portfolio on Instagram
                   </p>
@@ -180,17 +192,18 @@ export default function ArtistsPage() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-ht-gray border-y border-ht-red/10">
+      <section className="py-16 px-4 bg-ht-gray border-y-2 border-ht-red/20">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-2xl font-bold uppercase text-ht-cream mb-4">Book an Appointment or Just Walk In</h2>
+          <OrnamentalDivider className="mb-4" />
           <p className="font-body text-ht-cream/70 leading-relaxed mb-6">
             Walk-ins are welcome every day, 11am–7pm. To book with a specific artist, message them on Instagram or give us a call.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:5032363440" className="px-6 py-3 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors">
+            <a href="tel:5032363440" className="stamp-btn px-6 py-3 bg-ht-red text-white font-display text-sm tracking-widest uppercase hover:bg-ht-red-light transition-colors">
               Call (503) 236-3440
             </a>
-            <a href="https://www.instagram.com/historictattoo/" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors">
+            <a href="https://www.instagram.com/historictattoo/" target="_blank" rel="noopener noreferrer" className="stamp-btn px-6 py-3 border-2 border-ht-red/40 text-ht-cream font-display text-sm tracking-widest uppercase hover:border-ht-red hover:text-ht-red transition-colors">
               @historictattoo on Instagram
             </a>
           </div>
