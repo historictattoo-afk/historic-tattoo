@@ -126,11 +126,11 @@ export default function Home() {
           {/* Logo */}
           <div className="flex justify-center mb-8">
             <Image
-              src="https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1494189325899-CI4BWN033NVOAAPGTGM5/Historic+Tattoo?format=1500w"
+              src="/logo.png"
               alt="Historic Tattoo Portland"
-              width={320}
-              height={130}
-              className="object-contain w-64 sm:w-80"
+              width={220}
+              height={220}
+              className="object-contain w-40 sm:w-56 drop-shadow-[0_0_24px_rgba(192,57,43,0.25)]"
               priority
             />
           </div>

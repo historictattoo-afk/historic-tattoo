@@ -75,9 +75,8 @@ const localBusinessSchema = {
   description:
     "Portland's home of traditional American tattooing since 2007. Over 17 years in business with 109 years of combined artist experience. Home of the Get What You Get and Tattoo Plinko experiences. Thousands of hand-painted flash designs plus custom work. Walk-ins welcome daily.",
   url: "https://historictattoo.com",
-  logo: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1494189325899-CI4BWN033NVOAAPGTGM5/Historic+Tattoo?format=1500w",
-  image:
-    "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1494189325899-CI4BWN033NVOAAPGTGM5/Historic+Tattoo?format=1500w",
+  logo: "https://historictattoo.com/logo.png",
+  image: "https://historictattoo.com/logo.png",
   telephone: "+15032363440",
   email: "historictattoo@gmail.com",
   foundingDate: "2007",

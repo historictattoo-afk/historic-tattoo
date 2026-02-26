@@ -26,15 +26,19 @@ export default function Navbar() {
       <header className="sticky top-0 left-0 right-0 z-50 bg-ht-black/95 backdrop-blur-sm border-b border-ht-red/20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-2 group">
             <Image
-              src="https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1494189325899-CI4BWN033NVOAAPGTGM5/Historic+Tattoo?format=300w"
+              src="/logo.png"
               alt="Historic Tattoo Portland"
-              width={120}
-              height={48}
-              className="object-contain h-10 w-auto"
+              width={52}
+              height={52}
+              className="object-contain h-12 w-12"
               priority
             />
+            <span className="hidden sm:flex flex-col leading-none">
+              <span className="font-display text-sm font-bold tracking-widest text-ht-cream uppercase">Historic Tattoo</span>
+              <span className="font-display text-xs tracking-[0.2em] text-ht-gold uppercase">Portland, OR</span>
+            </span>
           </Link>
 
           {/* Desktop nav */}
