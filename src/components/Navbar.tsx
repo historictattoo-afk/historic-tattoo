@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 
 const links = [
@@ -27,20 +26,10 @@ export default function Navbar() {
 
       <header className="sticky top-0 left-0 right-0 z-50 bg-ht-black/95 backdrop-blur-sm border-b-2 border-ht-red/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/logo.png"
-              alt="Historic Tattoo Portland"
-              width={52}
-              height={52}
-              className="object-contain h-12 w-12 drop-shadow-[0_0_8px_rgba(196,30,30,0.3)]"
-              priority
-            />
-            <span className="hidden sm:flex flex-col leading-none">
-              <span className="font-display text-sm font-bold tracking-widest text-ht-cream uppercase">Historic Tattoo</span>
-              <span className="font-display text-[10px] tracking-[0.25em] text-ht-gold uppercase">Portland, OR · Est. 2007</span>
-            </span>
+          {/* Wordmark */}
+          <Link href="/" className="flex flex-col leading-none group">
+            <span className="font-display text-lg font-bold tracking-widest text-ht-cream uppercase group-hover:text-ht-red transition-colors">Historic Tattoo</span>
+            <span className="font-display text-[10px] tracking-[0.25em] text-ht-gold uppercase">Portland, OR · Est. 2007</span>
           </Link>
 
           {/* Desktop nav */}

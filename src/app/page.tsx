@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import {
   BannerRibbon,
   OrnamentalDivider,
@@ -150,26 +150,14 @@ export default function Home() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-ht-red/5 blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          {/* Logo with warm glow */}
-          <div className="flex justify-center mb-8">
-            <Image
-              src="/logo.png"
-              alt="Historic Tattoo Portland"
-              width={220}
-              height={220}
-              className="object-contain w-40 sm:w-56 drop-shadow-[0_0_30px_rgba(212,160,23,0.2)]"
-              priority
-            />
-          </div>
-
-          {/* Est. badge */}
+          {/* Typographic hero */}
           <div className="flex justify-center mb-6">
             <StampBadge>Est. 2007 · Portland, OR</StampBadge>
           </div>
 
-          <h1 className="font-display font-bold uppercase leading-tight text-4xl sm:text-5xl md:text-6xl text-ht-cream mb-4">
-            Portland&apos;s Traditional<br />
-            <span className="text-ht-red">Tattoo Shop</span>
+          <h1 className="font-display font-bold uppercase leading-none mb-4">
+            <span className="block text-5xl sm:text-7xl md:text-8xl text-ht-cream tracking-tight">Historic</span>
+            <span className="block text-5xl sm:text-7xl md:text-8xl text-ht-red tracking-tight">Tattoo</span>
           </h1>
 
           <p className="font-body text-ht-cream/70 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed mb-3">
