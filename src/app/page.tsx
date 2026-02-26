@@ -9,6 +9,7 @@ import {
   EagleIcon,
   HeartIcon,
   DiceIcon,
+  CrownIcon,
   LightningIcon,
   TradStar,
   CornerFrameSVG,
@@ -38,7 +39,7 @@ const services = [
     name: "GWYG Deluxe",
     price: "$200",
     tag: "Go Big",
-    icon: "dice",
+    icon: "crown",
     description:
       "Same game, bigger canvas. Let fate choose a bolder, larger traditional piece from our extended flash collection.",
     cta: "Learn More",
@@ -91,6 +92,7 @@ const reviews = [
 
 function ServiceIcon({ type, className }: { type: string; className?: string }) {
   if (type === "lightning") return <LightningIcon className={className} />;
+  if (type === "crown") return <CrownIcon className={className} />;
   return <DiceIcon className={className} />;
 }
 

@@ -25,12 +25,12 @@ export function BannerRibbon({
         aria-hidden="true"
       >
         {/* Left tail */}
-        <polygon points="0,20 40,20 50,0 50,80 40,60 0,60" fill="#c41e1e" />
+        <polygon points="0,20 40,20 50,0 50,80 40,60 0,60" fill="#a52422" />
         <polygon points="0,20 40,20 50,0 50,80 40,60 0,60" fill="rgba(0,0,0,0.15)" />
         {/* Center band */}
-        <rect x="50" y="10" width="300" height="60" fill="#c41e1e" />
+        <rect x="50" y="10" width="300" height="60" fill="#a52422" />
         {/* Right tail */}
-        <polygon points="400,20 360,20 350,0 350,80 360,60 400,60" fill="#c41e1e" />
+        <polygon points="400,20 360,20 350,0 350,80 360,60 400,60" fill="#a52422" />
         <polygon points="400,20 360,20 350,0 350,80 360,60 400,60" fill="rgba(0,0,0,0.15)" />
         {/* Top/bottom highlight lines */}
         <line x1="50" y1="15" x2="350" y2="15" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
@@ -55,16 +55,16 @@ export function OrnamentalDivider({ className = "" }: DecorationProps) {
   return (
     <div className={`flex items-center justify-center gap-3 py-4 ${className}`}>
       <svg width="80" height="2" aria-hidden="true">
-        <line x1="0" y1="1" x2="80" y2="1" stroke="#d4a017" strokeWidth="1" strokeDasharray="4 3" />
+        <line x1="0" y1="1" x2="80" y2="1" stroke="#e0b44a" strokeWidth="1" strokeDasharray="4 3" />
       </svg>
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
         <path
           d="M10 0l2.5 7.5H20l-6 4.5 2.5 7.5L10 15l-6.5 4.5L6 12 0 7.5h7.5z"
-          fill="#d4a017"
+          fill="#e0b44a"
         />
       </svg>
       <svg width="80" height="2" aria-hidden="true">
-        <line x1="0" y1="1" x2="80" y2="1" stroke="#d4a017" strokeWidth="1" strokeDasharray="4 3" />
+        <line x1="0" y1="1" x2="80" y2="1" stroke="#e0b44a" strokeWidth="1" strokeDasharray="4 3" />
       </svg>
     </div>
   );
@@ -164,6 +164,25 @@ export function DiceIcon({ className = "" }: DecorationProps) {
       <circle cx="32" cy="32" r="4" fill="currentColor" />
       <circle cx="22" cy="42" r="4" fill="currentColor" />
       <circle cx="42" cy="42" r="4" fill="currentColor" />
+    </svg>
+  );
+}
+
+/* ── Crown Icon ──────────────────────────────────────
+   For Deluxe / premium services.
+*/
+export function CrownIcon({ className = "" }: DecorationProps) {
+  return (
+    <svg viewBox="0 0 64 64" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M8 48L14 20l12 12 8-20 8 20 12-12 6 28z"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <rect x="8" y="48" width="48" height="6" rx="2" stroke="currentColor" strokeWidth="3" fill="none" />
+      <circle cx="32" cy="12" r="3" fill="currentColor" />
     </svg>
   );
 }
