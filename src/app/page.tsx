@@ -142,7 +142,7 @@ export default function Home() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-4 pt-8 overflow-hidden diagonal-stripes">
+      <section className="relative min-h-[75vh] sm:min-h-[92vh] flex flex-col items-center justify-center text-center px-4 py-16 sm:pt-8 overflow-hidden diagonal-stripes">
         {/* Background watermark */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none opacity-[0.03]">
           <AnchorIcon className="w-full h-full text-ht-cream" />
@@ -530,14 +530,17 @@ export default function Home() {
       </section>
 
       {/* ── Visit / Map CTA ──────────────────────────────── */}
-      <section className="py-24 px-4 relative">
-        <CornerFrameSVG />
+      <section className="py-24 px-4">
         <div className="max-w-5xl mx-auto text-center">
           <p className="font-display text-xs tracking-[0.4em] text-ht-gold uppercase mb-3">Come See Us</p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase text-ht-cream mb-6">
+          <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase text-ht-cream mb-4">
             Walk In Today
           </h2>
-          <OrnamentalDivider className="mb-6" />
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="block w-12 h-px bg-ht-gold/40" />
+            <TradStar className="w-4 h-4 text-ht-gold" />
+            <span className="block w-12 h-px bg-ht-gold/40" />
+          </div>
           <p className="font-body text-ht-cream/70 text-lg mb-10 max-w-xl mx-auto">
             No appointment needed. Just show up between 11am and 7pm any day of the week and our artists will take care of you.
           </p>
