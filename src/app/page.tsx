@@ -92,15 +92,15 @@ const artists = [
 ];
 
 const portfolioGrid = [
-  "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260914078-GP6VEZ0QUIHLSBNVQ9VD/image0+%283%29.jpeg",
-  "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752153066661-XCKV7C47MASE3QH8V23O/Screenshot%2B2025-07-10%2Bat%2B6.10.25%25E2%2580%25AFAM.jpg",
-  "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752154031208-0211B5W3OOSB6L1EDEFZ/IMG_1250.jpeg",
-  "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260696730-T41YHUXASE5MA2MH3ZMQ/image0.jpeg",
-  "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752153767790-VGSGPM17EFWTG09CORM9/unnamed.jpg",
-  "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260917349-BJ3M63BOOWGVAC35OGPP/image4+%282%29.jpeg",
-  "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752153794631-H86G5RKEWRJXQLRAO3FA/IMG_4755.jpeg",
-  "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752154040779-FZOEPCI40Z7LJEEMY6RF/IMG_6676.jpeg",
-  "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260696744-G183ZP02TIQ015UKBRTH/image2.jpeg",
+  { src: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260914078-GP6VEZ0QUIHLSBNVQ9VD/image0+%283%29.jpeg", alt: "Traditional American tattoo by Craig Brown at Historic Tattoo Portland" },
+  { src: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752153066661-XCKV7C47MASE3QH8V23O/Screenshot%2B2025-07-10%2Bat%2B6.10.25%25E2%2580%25AFAM.jpg", alt: "Bold traditional tattoo work from Historic Tattoo in SE Portland" },
+  { src: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752154031208-0211B5W3OOSB6L1EDEFZ/IMG_1250.jpeg", alt: "Classic American tattoo flash by Adam DeFiglio at Historic Tattoo Portland" },
+  { src: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260696730-T41YHUXASE5MA2MH3ZMQ/image0.jpeg", alt: "Traditional tattoo by Tony J. Vyeda at Historic Tattoo Portland Oregon" },
+  { src: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752153767790-VGSGPM17EFWTG09CORM9/unnamed.jpg", alt: "Hand-painted flash tattoo by Abbie Fitzpatrick at Historic Tattoo Portland" },
+  { src: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260917349-BJ3M63BOOWGVAC35OGPP/image4+%282%29.jpeg", alt: "Traditional American eagle tattoo from Historic Tattoo SE Portland" },
+  { src: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752153794631-H86G5RKEWRJXQLRAO3FA/IMG_4755.jpeg", alt: "Classic rose tattoo from Portland's Historic Tattoo shop" },
+  { src: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752154040779-FZOEPCI40Z7LJEEMY6RF/IMG_6676.jpeg", alt: "Bold lines and solid color traditional tattoo at Historic Tattoo Portland" },
+  { src: "https://images.squarespace-cdn.com/content/v1/590f374a1e5b6c8e16f091b5/1752260696744-G183ZP02TIQ015UKBRTH/image2.jpeg", alt: "Walk-in flash tattoo from Historic Tattoo in Portland Oregon" },
 ];
 
 const reviews = [
@@ -158,6 +158,7 @@ export default function Home() {
           <h1 className="font-display font-bold uppercase leading-none mb-4">
             <span className="block text-5xl sm:text-7xl md:text-8xl text-ht-cream tracking-wide">Historic</span>
             <span className="block text-5xl sm:text-7xl md:text-8xl text-ht-red tracking-wide">Tattoo</span>
+            <span className="sr-only"> — Traditional American Tattoo Shop in Portland, Oregon</span>
           </h1>
 
           <p className="font-body text-ht-cream/70 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed mb-3">
@@ -284,11 +285,11 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-3 gap-1 sm:gap-2 mb-10">
-            {portfolioGrid.map((src, i) => (
+            {portfolioGrid.map((img, i) => (
               <div key={i} className="relative aspect-square overflow-hidden bg-ht-black group warm-glow">
                 <Image
-                  src={`${src}?format=500w`}
-                  alt={`Traditional tattoo work from Historic Tattoo Portland`}
+                  src={`${img.src}?format=500w`}
+                  alt={img.alt}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 33vw, 20vw"
@@ -386,7 +387,7 @@ export default function Home() {
                   <div className="absolute inset-[3px] rounded-full border border-dashed border-ht-red/30 z-10 pointer-events-none" />
                   <Image
                     src={`${artist.photo}?format=300w`}
-                    alt={artist.name}
+                    alt={`${artist.name} — tattoo artist at Historic Tattoo Portland`}
                     fill
                     className="object-cover"
                     sizes="80px"
@@ -494,7 +495,7 @@ export default function Home() {
 
           {/* Flash-sheet-style border grid */}
           <div className="grid grid-cols-3 gap-1 sm:gap-2 mb-8 grunge-border p-1 sm:p-2">
-            {portfolioGrid.slice(0, 9).map((src, i) => (
+            {portfolioGrid.slice(0, 9).map((img, i) => (
               <a
                 key={i}
                 href="https://www.instagram.com/historictattoo/"
@@ -503,8 +504,8 @@ export default function Home() {
                 className="relative aspect-square overflow-hidden bg-ht-black group block warm-glow"
               >
                 <Image
-                  src={`${src}?format=500w`}
-                  alt="Historic Tattoo Portland — traditional American tattoo"
+                  src={`${img.src}?format=500w`}
+                  alt={img.alt}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 33vw, 20vw"

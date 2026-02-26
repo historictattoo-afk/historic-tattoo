@@ -130,6 +130,60 @@ const localBusinessSchema = {
     { "@type": "LocationFeatureSpecification", name: "Flash Tattoos", value: true },
     { "@type": "LocationFeatureSpecification", name: "Custom Tattoos", value: true },
   ],
+  areaServed: [
+    { "@type": "City", name: "Portland", "@id": "https://en.wikipedia.org/wiki/Portland,_Oregon" },
+    { "@type": "State", name: "Oregon" },
+  ],
+  knowsAbout: [
+    "Traditional American Tattoo",
+    "Flash Tattoo",
+    "Get What You Get Tattoo",
+    "Tattoo Plinko",
+    "Custom Tattoo Design",
+  ],
+  makesOffer: [
+    {
+      "@type": "Offer",
+      name: "Get What You Get Tattoo",
+      price: "100.00",
+      priceCurrency: "USD",
+      description: "Buy a token, spin the wheel, walk out with a traditional American tattoo. Every result is a winner.",
+    },
+    {
+      "@type": "Offer",
+      name: "Get What You Get Deluxe",
+      price: "200.00",
+      priceCurrency: "USD",
+      description: "Same game, bigger canvas. A larger, bolder traditional piece from our extended flash collection.",
+    },
+    {
+      "@type": "Offer",
+      name: "Tattoo Plinko",
+      price: "200.00",
+      priceCurrency: "USD",
+      description: "Drop the puck, let physics decide. Portland's most dramatic tattoo experience.",
+    },
+  ],
+  review: [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Sarah M." },
+      reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+      reviewBody: "Got a walk-in traditional rose from Craig and it's the best tattoo I own. The shop has incredible energy — everyone is welcoming and professional. Will be back.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Jake T." },
+      reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+      reviewBody: "Did the Get What You Get on a whim and got an anchor. Couldn't be happier. The whole experience is just fun — these guys clearly love what they do.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Megan R." },
+      reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+      reviewBody: "Historic Tattoo is a Portland institution. I've gotten three tattoos here and every single one is exactly what traditional American tattooing should look like. Go here.",
+    },
+  ],
 };
 
 export default function RootLayout({

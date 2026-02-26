@@ -10,9 +10,83 @@ import {
 } from "@/components/Decorations";
 
 export const metadata: Metadata = {
-  title: "Get What You Get | Historic Tattoo — Portland, OR",
+  title: "Get What You Get Tattoo | Historic Tattoo — Portland, OR",
   description:
-    "Portland's most adventurous tattoo experience. Buy a token, spin the wheel, and walk out with a classic traditional tattoo. $100, $200, or Plinko.",
+    "Portland's most adventurous tattoo experience at Historic Tattoo. Buy a token, spin the wheel, walk out with a traditional American tattoo. $100 GWYG, $200 Deluxe, $200 Plinko. Walk-ins daily at 2001 SE 50th Ave.",
+  openGraph: {
+    title: "Get What You Get Tattoo — Historic Tattoo Portland, OR",
+    description:
+      "Portland's most adventurous tattoo experience. Buy a token, take your chances, get a traditional American tattoo. From $100.",
+    url: "https://historictattoo.com/get-what-you-get",
+    siteName: "Historic Tattoo",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Get What You Get Tattoo — Historic Tattoo Portland",
+    description:
+      "Buy a token, spin the wheel, walk out with a classic traditional tattoo. From $100 at Historic Tattoo Portland.",
+  },
+  alternates: {
+    canonical: "https://historictattoo.com/get-what-you-get",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Can I choose where it goes?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We have some flexibility on placement, but ultimately it goes where it looks best for the design.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I veto a design?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No — that's the whole point. Trust the process. We have thousands of designs and they're all great.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need an appointment for Get What You Get?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nope. Just walk in any day between 11am and 7pm at 2001 SE 50th Ave in Portland, buy a token at the front, and we'll take care of the rest.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What style are the designs?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "All traditional American — bold lines, classic motifs, solid color. The real deal.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What if I don't like the result?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You will. But if you really can't get past it, come talk to us. We're reasonable people who want you to leave happy.",
+      },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://historictattoo.com" },
+    { "@type": "ListItem", position: 2, name: "Get What You Get", item: "https://historictattoo.com/get-what-you-get" },
+  ],
 };
 
 const options = [
@@ -68,6 +142,14 @@ function OptionIcon({ type, className }: { type: string; className?: string }) {
 export default function GWYGPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Page header */}
       <section className="pt-32 pb-16 px-4 text-center border-b-2 border-ht-red/20 diagonal-stripes relative">
         <div className="relative z-10">

@@ -3,9 +3,27 @@ import Image from "next/image";
 import { OrnamentalDivider, StampBadge } from "@/components/Decorations";
 
 export const metadata: Metadata = {
-  title: "Tattoo Artists | Historic Tattoo Portland, OR",
+  title: "Tattoo Artists | Historic Tattoo — Portland, OR",
   description:
-    "Meet the artists at Historic Tattoo in Portland, OR. 8 traditional American tattoo artists with 109 years of combined experience. Walk-ins welcome daily 11am–7pm.",
+    "Meet the 8 traditional American tattoo artists at Historic Tattoo in SE Portland, OR. 109 years of combined experience. Walk-ins welcome daily 11am–7pm at 2001 SE 50th Ave.",
+  openGraph: {
+    title: "Our Tattoo Artists — Historic Tattoo Portland, OR",
+    description:
+      "8 traditional American tattoo artists with 109 years combined experience. Walk-ins welcome daily in SE Portland.",
+    url: "https://historictattoo.com/artists",
+    siteName: "Historic Tattoo",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tattoo Artists — Historic Tattoo Portland, OR",
+    description:
+      "Meet our 8 traditional American tattoo artists. 109 years combined experience. Walk-ins daily 11am–7pm.",
+  },
+  alternates: {
+    canonical: "https://historictattoo.com/artists",
+  },
 };
 
 const artists = [
@@ -111,9 +129,12 @@ export default function ArtistsPage() {
       <section className="pt-32 pb-16 px-4 text-center border-b-2 border-ht-red/20 diagonal-stripes relative">
         <div className="relative z-10">
           <StampBadge className="mb-4">109 Years Combined</StampBadge>
-          <h1 className="font-display text-5xl sm:text-7xl font-bold uppercase text-ht-cream mb-4 mt-4">Our Artists</h1>
+          <h1 className="font-display text-5xl sm:text-7xl font-bold uppercase text-ht-cream mb-4 mt-4">
+            Our Artists
+            <span className="sr-only"> — Traditional Tattoo Artists in Portland, OR</span>
+          </h1>
           <p className="font-body text-ht-cream/60 max-w-xl mx-auto">
-            Eight traditional American tattoo artists. Click any card to view their work on Instagram, or message them directly to book an appointment.
+            Eight traditional American tattoo artists at Portland&apos;s Historic Tattoo. Click any card to view their work on Instagram, or message them directly to book an appointment.
           </p>
           <OrnamentalDivider className="mt-4" />
         </div>
@@ -134,7 +155,7 @@ export default function ArtistsPage() {
                       {artist.photo ? (
                         <Image
                           src={`${artist.photo}?format=300w`}
-                          alt={artist.name}
+                          alt={`${artist.name} — tattoo artist at Historic Tattoo Portland`}
                           fill
                           className="object-cover"
                           sizes="96px"
@@ -172,7 +193,7 @@ export default function ArtistsPage() {
                     <div key={i} className="relative aspect-square overflow-hidden bg-ht-gray group warm-glow">
                       <Image
                         src={`${src}?format=500w`}
-                        alt={`${artist.name} tattoo work`}
+                        alt={`Traditional American tattoo by ${artist.name} at Historic Tattoo Portland`}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                         sizes="(max-width: 1024px) 45vw, 25vw"

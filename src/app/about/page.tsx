@@ -10,9 +10,27 @@ import {
 } from "@/components/Decorations";
 
 export const metadata: Metadata = {
-  title: "About | Historic Tattoo — Portland, OR",
+  title: "About Historic Tattoo — Portland's Traditional Tattoo Shop Since 2007",
   description:
-    "Historic Tattoo has been Portland's home of traditional American tattooing since 2007. Learn about our shop, our artists, and our commitment to the craft.",
+    "Historic Tattoo has been Portland's home of traditional American tattooing since 2007. Located in SE Portland's Foster-Powell neighborhood at 2001 SE 50th Ave. Walk-ins welcome daily.",
+  openGraph: {
+    title: "About Historic Tattoo — Portland's Traditional Tattoo Shop Since 2007",
+    description:
+      "Portland's home of traditional American tattooing since 2007. 8 artists, 109 years combined experience, walk-ins welcome daily 11am–7pm.",
+    url: "https://historictattoo.com/about",
+    siteName: "Historic Tattoo",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Historic Tattoo — Portland, OR",
+    description:
+      "Portland's home of traditional American tattooing since 2007. Walk-ins welcome daily 11am–7pm.",
+  },
+  alternates: {
+    canonical: "https://historictattoo.com/about",
+  },
 };
 
 export default function AboutPage() {
@@ -23,7 +41,8 @@ export default function AboutPage() {
         <div className="relative z-10">
           <StampBadge className="mb-4">Est. 2007</StampBadge>
           <h1 className="font-display text-5xl sm:text-7xl font-bold uppercase text-ht-cream mt-4">
-            About
+            About Historic Tattoo
+            <span className="sr-only"> — Portland&apos;s Traditional Tattoo Shop</span>
           </h1>
           <OrnamentalDivider className="mt-4" />
         </div>
