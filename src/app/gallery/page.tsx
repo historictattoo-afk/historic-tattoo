@@ -67,13 +67,13 @@ export default function GalleryPage() {
       </section>
 
       {/* Artist navigation pills */}
-      <section className="py-6 px-4 bg-ht-gray border-b-2 border-ht-red/20 sticky top-16 z-40">
-        <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-2">
+      <section className="py-4 px-4 bg-ht-black/95 backdrop-blur-sm border-b-2 border-ht-red/20 sticky top-16 z-40">
+        <div className="max-w-6xl mx-auto flex flex-nowrap overflow-x-auto gap-2 sm:flex-wrap sm:justify-center scrollbar-hide">
           {artistsWithWork.map((artist) => (
             <a
               key={artist.slug}
               href={`#${artist.slug}`}
-              className="font-display text-xs tracking-widest uppercase text-ht-cream/60 hover:text-ht-red border border-ht-cream/10 hover:border-ht-red/40 px-4 py-2 rounded-sm transition-colors"
+              className="font-display text-xs tracking-widest uppercase text-ht-cream hover:text-white whitespace-nowrap bg-ht-red/10 hover:bg-ht-red border border-ht-red/30 hover:border-ht-red px-5 py-2.5 rounded-md transition-all min-h-[40px] flex items-center flex-shrink-0"
             >
               {artist.name}
             </a>

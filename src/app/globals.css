@@ -338,6 +338,26 @@ body {
   background-size: 20px 20px;
 }
 
+/* ── Hide scrollbar for horizontal pill nav ──────── */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── Mobile sticky CTA safe area ─────────────────── */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 80px;
+  }
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 /* ── Scrollbar ────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
