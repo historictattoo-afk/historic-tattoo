@@ -53,6 +53,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: "https://historictattoo.com/tattoo-shop-portland",
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: "https://historictattoo.com/privacy",
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
   ];
 
   const artistPages: MetadataRoute.Sitemap = artists.map((artist) => ({
