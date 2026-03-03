@@ -293,10 +293,10 @@ export default function TattooShopPortlandLP() {
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start items-center sm:items-stretch mb-6">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-6">
                 <a
                   href={business.phoneHref}
-                  className="btn-primary whitespace-nowrap flex-shrink-0"
+                  className="btn-primary"
                 >
                   <svg
                     className="w-4 h-4 flex-shrink-0"
@@ -317,7 +317,7 @@ export default function TattooShopPortlandLP() {
                   href={business.maps.directions}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary whitespace-nowrap flex-shrink-0"
+                  className="btn-secondary"
                 >
                   <svg
                     className="w-4 h-4 flex-shrink-0"
@@ -696,17 +696,17 @@ export default function TattooShopPortlandLP() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
             {/* Map */}
-            <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-ht-gold/15">
+            <div className="rounded-lg overflow-hidden border border-ht-gold/15">
               <iframe
-                src={business.maps.embed}
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Historic+Tattoo,2001+SE+50th+Ave,Portland,OR+97215&zoom=15"
                 width="100%"
-                height="100%"
+                height="400"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Historic Tattoo Portland location map"
-                className="absolute inset-0"
+                className="w-full"
               />
             </div>
 
