@@ -8,8 +8,21 @@
   --font-blackletter: "UnifrakturCook", serif;
 }
 
-html {
+html,
+body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* ── Focus Visible — accessibility for keyboard users ── */
+:focus-visible {
+  outline: 2px solid #e0b44a;
+  outline-offset: 2px;
+}
+
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
 body {
@@ -108,6 +121,7 @@ body {
   gap: 0.5rem;
   padding: 1rem 2rem;
   min-height: 48px;
+  white-space: nowrap;
   background-color: #a52422;
   color: #fff;
   font-family: var(--font-oswald), sans-serif;
@@ -221,6 +235,13 @@ body {
   box-shadow:
     inset 0 0 0 1px rgba(165, 36, 34, 0.05),
     0 0 0 4px rgba(10, 10, 8, 0.5);
+}
+
+@media (max-width: 639px) {
+  .grunge-border {
+    outline: none;
+    outline-offset: 0;
+  }
 }
 
 /* ── Vintage Badge/Stamp ──────────────────────────── */
@@ -358,14 +379,3 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* ── Scrollbar ────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0a0a08;
-}
-::-webkit-scrollbar-thumb {
-  background: #a52422;
-  border-radius: 3px;
-}
