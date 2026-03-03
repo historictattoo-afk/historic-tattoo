@@ -58,7 +58,7 @@ export default function Navbar() {
   return (
     <>
       {/* Top bar — phone + hours always visible */}
-      <div className="bg-ht-red text-white text-xs font-display tracking-widest uppercase text-center py-2 px-4 border-b-2 border-ht-red-light/30">
+      <div className="bg-ht-red text-white text-xs font-display tracking-widest uppercase text-center py-2 px-4 border-b-2 border-ht-red-light/30 overflow-hidden">
         <a href="tel:5032363440" aria-label="Call Historic Tattoo — walk-ins welcome daily, open 11am to 7pm" className="hover:text-ht-cream transition-colors">
           <span className="text-ht-gold mr-2" aria-hidden="true">&#9733;</span>
           Walk-ins Welcome Daily · Open 11am–7pm · (503) 236-3440
