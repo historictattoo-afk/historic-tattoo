@@ -75,7 +75,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+          <nav className="hidden xl:flex items-center gap-8" aria-label="Main navigation">
             {links.map((l) => (
               <Link
                 key={l.href}
@@ -97,7 +97,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             ref={toggleRef}
-            className="lg:hidden text-ht-cream p-2"
+            className="xl:hidden text-ht-cream p-2"
             onClick={() => setOpen(!open)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
@@ -116,7 +116,7 @@ export default function Navbar() {
           <nav
             ref={menuRef}
             id="mobile-menu"
-            className="lg:hidden bg-ht-gray border-t-2 border-ht-red/30 px-4 py-6 flex flex-col gap-4"
+            className="xl:hidden bg-ht-gray border-t-2 border-ht-red/30 px-4 py-6 flex flex-col gap-4"
             aria-label="Mobile navigation"
           >
             {links.map((l) => (
