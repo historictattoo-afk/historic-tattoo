@@ -66,7 +66,7 @@ export default function Navbar() {
         </a>
       </div>
 
-      <header className="sticky top-0 left-0 right-0 z-50 bg-ht-black/95 backdrop-blur-sm border-b-2 border-ht-red/30">
+      <header className="sticky top-0 left-0 right-0 z-50 bg-ht-black border-b-2 border-ht-red/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
           {/* Wordmark */}
           <Link href="/" className="flex flex-col leading-none group" aria-label="Historic Tattoo — Home">
