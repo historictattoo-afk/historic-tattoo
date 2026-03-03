@@ -293,7 +293,7 @@ export default function TattooShopPortlandLP() {
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-6">
+              <div className="flex flex-col gap-3 justify-center lg:justify-start mb-6 max-w-sm mx-auto lg:mx-0 lg:max-w-none lg:flex-row">
                 <a
                   href={business.phoneHref}
                   className="btn-primary"
@@ -317,7 +317,7 @@ export default function TattooShopPortlandLP() {
                   href={business.maps.directions}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary"
+                  className="btn-secondary w-full lg:w-auto"
                 >
                   <svg
                     className="w-4 h-4 flex-shrink-0"
